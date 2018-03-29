@@ -22,11 +22,13 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
 end
 
+gem 'simple_form'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~> 4.0.0'
 gem 'high_voltage'
 gem 'jquery-rails'
 gem 'pg', '~> 0.18'
+gem 'activerecord-postgis-adapter'
 gem 'slim-rails'
 gem 'therubyracer', :platform=>:ruby
 group :development do

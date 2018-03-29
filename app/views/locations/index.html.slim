@@ -1,0 +1,19 @@
+h1 New Location
+= render 'form', location: Location.new
+
+h1 Listing locations
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @locations.each do |location|
+      tr
+        td = link_to 'Show', location
+        td = link_to 'Destroy', location, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
