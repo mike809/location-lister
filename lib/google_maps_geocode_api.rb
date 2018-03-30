@@ -7,7 +7,7 @@ class GoogleMapsGeocodeApi
     @options = {
       query: {
         address: location_params[:location_address],
-        key: 'AIzaSyDFdBnMHE8sqdUl3VBse7bXRWpV0XPC5pY'
+        key: ENV['GOOGLE_API_KEY']
       }
     }
   end
