@@ -7,13 +7,13 @@ class LocationsController < ApplicationController
 
     if geocoded_locations.count == 1
       Location.create(geocoded_locations.first)
+      redirect_to locations_url
     else
       @results = geocoded_locations.map do |location_params|
         Location.new(location_params)
       end
+      render :index
     end
-
-    render :index
   end
 
   private
