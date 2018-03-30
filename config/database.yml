@@ -13,6 +13,4 @@ test:
 
 production:
   <<: *default
-  database: locations-app_production
-  username: location-app
-  password: <%= ENV['LOCATION-APP_DATABASE_PASSWORD'] %>
+  url: <%= ENV.fetch('DATABASE_URL', '').sub(/^postgres/, "postgis") %>
