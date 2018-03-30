@@ -22,26 +22,20 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
 end
 
+gem 'httparty'
 gem 'simple_form'
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'bootstrap', '~> 4.0.0'
-gem 'high_voltage'
+gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'pg', '~> 0.18'
 gem 'activerecord-postgis-adapter'
 gem 'slim-rails'
-gem 'therubyracer', :platform=>:ruby
-group :development do
-  gem 'better_errors'
-  gem 'hub', :require=>nil
-  gem 'rails_layout'
-  gem 'spring-commands-rspec'
-end
+
 group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails'
 end
+
 group :test do
   gem 'database_cleaner'
   gem 'launchy'
