@@ -1,19 +1,21 @@
-h1 New Location
-= render 'form', location: Location.new
+h3 New Location
+= render 'form', location: @location
 
-h1 Listing locations
+- if @results.present?
+  = render 'result', collection: @results
 
-table
+h3 Listing locations
+
+table.table.table-bordered.table-striped.table-hover
   thead
     tr
-      th
-      th
-      th
+      th Address
+      th Longitude
+      th Latitude
 
   tbody
     - @locations.each do |location|
       tr
-        td = link_to 'Show', location
-        td = link_to 'Destroy', location, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
+        td = location.location_address
+        td = location.longitude
+        td = location.latitude

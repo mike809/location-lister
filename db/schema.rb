@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20180328221002) do
   enable_extension "postgis"
 
   create_table "locations", force: :cascade do |t|
-    t.geography "location_lonlat", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
+    t.geometry "location_lonlat", limit: {:srid=>0, :type=>"st_point"}
     t.string "location_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

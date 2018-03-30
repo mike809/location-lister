@@ -1,35 +1,29 @@
 class LocationsController < ApplicationController
-  before_action :set_location, only: [:show, :destroy]
+  before_action :load_locations
 
-  def index
+  def create
+    geocode_api = GoogleMapsGeocodeApi.new(location_params)
+    geocoded_locations = geocode_api.formatted_addresses_and_locations
+
+    if geocoded_locations.count == 1
+      Location.create(geocoded_locations.first)
+    else
+      @results = geocoded_locations.map do |location_params|
+        Location.new(location_params)
+      end
+    end
+
+    render :index
+  end
+
+  private
+
+  def load_locations
     @location = Location.new
     @locations = Location.all
   end
 
-  def show
+  def location_params
+    params.fetch(:location, {}).permit(:location_address)
   end
-
-  def create
-    @location = Location.new(location_params)
-
-    if @location.save
-      redirect_to @location, notice: 'Location was successfully created.'
-    else
-      render :new
-    end
-  end
-
-  def destroy
-    @location.destroy
-    redirect_to locations_url, notice: 'Location was successfully destroyed.'
-  end
-
-  private
-    def set_location
-      @location = Location.find(params[:id])
-    end
-
-    def location_params
-      params.fetch(:location, {})
-    end
 end

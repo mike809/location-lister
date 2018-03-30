@@ -1,0 +1,14 @@
+h4 Multiple results match that address, which one woudl you like to save?
+table.table.table-bordered.table-striped.table-hover
+  thead
+    tr
+      th Address
+      th.text-center Save
+
+  tbody
+    - @results.each do |result|
+      tr
+        td = result.location_address
+        td.text-center = button_to('Save this one', {}, \
+          params: { location: { location_address: result.location_address } }, \
+          class: 'btn btn-primary')

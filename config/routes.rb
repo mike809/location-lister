@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  resources :locations
+  post '/', to: 'locations#create', as: :locations
   root to: 'locations#index'
 end
