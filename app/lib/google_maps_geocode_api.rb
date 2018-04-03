@@ -16,13 +16,17 @@ class GoogleMapsGeocodeApi
     @formatted_addresses ||= results.map do |result|
       {
         location_address: result.dig('formatted_address'),
-        location_lonlat:
-          "POINT (#{result.dig('geometry', 'location').values.join(' ')})"
+        location_lonlat: location_point(result['geometry'])
       }
     end
   end
 
   private
+
+  def location_point(geometry)
+    coordinates = geometry['location'].values.join(' ')
+    "POINT (#{coordinates})"
+  end
 
   def results
     @results ||= geocoded_address.dig('results')
